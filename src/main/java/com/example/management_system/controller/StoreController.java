@@ -1,8 +1,11 @@
 package com.example.management_system.controller;
 
+import com.example.management_system.model.Inventory;
 import com.example.management_system.model.Store;
+import com.example.management_system.service.InventoryService;
 import com.example.management_system.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,5 +40,21 @@ public class StoreController {
     @GetMapping("/{id}")
     public Optional<Store> getStoreById(@PathVariable int id) {
         return storeService.getStoreById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Store> updateStore(@PathVariable int id, @RequestBody Store store) {
+        Optional<Store> tempStore = storeService.getStoreById(id);
+        if (tempStore.isPresent()) {
+            Store existingStore = tempStore.get();
+            existingStore.setName(store.getName());
+            existingStore.setLocation(store.getLocation());
+            existingStore.setTotalSales(store.getTotalSales());
+
+            Store updatedStore = storeService.saveStore(existingStore);
+            return ResponseEntity.ok(updatedStore);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

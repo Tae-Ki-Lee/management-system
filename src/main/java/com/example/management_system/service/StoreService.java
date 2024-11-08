@@ -1,5 +1,6 @@
 package com.example.management_system.service;
 
+import com.example.management_system.model.Inventory;
 import com.example.management_system.model.Store;
 import com.example.management_system.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,9 @@ public class StoreService {
     // 특정 점포 조회
     public Optional<Store> getStoreById(int id) {
         return storeRepository.findById(id);
+    }
+
+    public Store saveStore(Store store) {
+        return storeRepository.save(store);
     }
 }

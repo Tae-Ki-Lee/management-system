@@ -1,11 +1,14 @@
 package com.example.management_system.service;
 
 import com.example.management_system.model.SalesItem;
+import com.example.management_system.model.Store;
 import com.example.management_system.repository.SalesItemRepository;
+import com.example.management_system.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SalesItemService {
@@ -29,5 +32,13 @@ public class SalesItemService {
     // 판매 아이템 삭제
     public void deleteSalesItem(int id) {
         salesItemRepository.deleteById(id);
+    }
+
+    public Optional<SalesItem> getSalesItembyId(int id){
+        return salesItemRepository.findById(id);
+    }
+
+    public SalesItem saveItem(SalesItem item) {
+        return salesItemRepository.save(item);
     }
 }

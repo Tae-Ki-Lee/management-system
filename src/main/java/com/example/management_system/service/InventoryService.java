@@ -27,7 +27,10 @@ public class InventoryService {
         }
         return null;  // 해당 점포가 없으면 null 반환 (실제 환경에서는 예외 처리)
     }
-
+    // 특정 점포에 대한 모든 재고 조회
+    public Optional<Inventory> getInventoryById(int id) {
+        return inventoryRepository.findById(id);
+    }
     // 재고 추가
     public Inventory addInventory(int storeId, String itemName, int quantity, double price) {
         Optional<Store> store = storeRepository.findById(storeId);
@@ -45,5 +48,15 @@ public class InventoryService {
     // 재고 삭제
     public void deleteInventory(int id) {
         inventoryRepository.deleteById(id);
+    }
+
+    //재고 전체 출력
+    public List<Inventory> getInventory() {
+        return inventoryRepository.findAll();
+    }
+
+    // 기존 재고 저장 메서드 추가
+    public Inventory saveInventory(Inventory inventory) {
+        return inventoryRepository.save(inventory);
     }
 }
