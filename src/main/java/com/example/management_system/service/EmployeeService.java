@@ -40,6 +40,7 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    // 저장 메서드
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }

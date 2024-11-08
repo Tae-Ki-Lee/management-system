@@ -34,10 +34,12 @@ public class SalesItemService {
         salesItemRepository.deleteById(id);
     }
 
+    // 판매 아이템 id로 검색 후 리턴
     public Optional<SalesItem> getSalesItembyId(int id){
         return salesItemRepository.findById(id);
     }
 
+    // 판매 아이템 저장
     public SalesItem saveItem(SalesItem item) {
         return salesItemRepository.save(item);
     }

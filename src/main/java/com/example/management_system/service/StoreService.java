@@ -39,7 +39,9 @@ public class StoreService {
         return storeRepository.findById(id);
     }
 
+    // 저장 메서드
     public Store saveStore(Store store) {
         return storeRepository.save(store);
     }
+
 }

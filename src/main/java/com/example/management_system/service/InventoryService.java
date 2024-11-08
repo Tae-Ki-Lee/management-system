@@ -50,12 +50,12 @@ public class InventoryService {
         inventoryRepository.deleteById(id);
     }
 
-    //재고 전체 출력
+    // 재고 전체 출력
     public List<Inventory> getInventory() {
         return inventoryRepository.findAll();
     }
 
-    // 기존 재고 저장 메서드 추가
+    // 저장 메서드
     public Inventory saveInventory(Inventory inventory) {
         return inventoryRepository.save(inventory);
     }

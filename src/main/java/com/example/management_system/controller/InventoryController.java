@@ -37,7 +37,7 @@ public class InventoryController {
     public void deleteInventory(@PathVariable int id) {
         inventoryService.deleteInventory(id);
     }
-
+    // 재고 수정 (PUT 요청)
     @PutMapping("/{id}")
     public ResponseEntity<Inventory> updateInventory(@PathVariable int id, @RequestBody Inventory inventory) {
         Optional<Inventory> tempInventory = inventoryService.getInventoryById(id);

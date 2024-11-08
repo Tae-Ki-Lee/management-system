@@ -42,6 +42,7 @@ public class StoreController {
         return storeService.getStoreById(id);
     }
 
+    // 특정 점포 수정 (PUT 요청)
     @PutMapping("/{id}")
     public ResponseEntity<Store> updateStore(@PathVariable int id, @RequestBody Store store) {
         Optional<Store> tempStore = storeService.getStoreById(id);

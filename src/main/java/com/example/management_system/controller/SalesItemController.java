@@ -34,6 +34,8 @@ public class SalesItemController {
     public void deleteSalesItem(@PathVariable int id) {
         salesItemService.deleteSalesItem(id);
     }
+
+    // 특정 판매 아이템 수정 (PUT 요청)
     @PutMapping("/{id}")
     public ResponseEntity<SalesItem> updateStore(@PathVariable int id, @RequestBody SalesItem item) {
         Optional<SalesItem> tempitems = salesItemService.getSalesItembyId(id);
@@ -49,4 +51,5 @@ public class SalesItemController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

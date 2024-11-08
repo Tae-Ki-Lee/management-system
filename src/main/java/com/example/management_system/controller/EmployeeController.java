@@ -41,6 +41,7 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
+    // 특정 직원 수정 (PUT 요청)
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
         Optional<Employee> tempEmployee = employeeService.getEmployeeById(id);
